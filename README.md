@@ -78,6 +78,27 @@ print([t.name for t in tools])  # ["add", "subtract", "multiply", "divide"]
 await stack.aclose()
 ```
 
+## Cline MCP Configuration
+
+If using Cline MCP, add the following configuration:
+
+```json
+{
+  "mcpServers": {
+    "calculator": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "<absolute_path>/calculator_mcp/",
+        "run",
+        "stdio_server.py"
+      ]
+    }
+  }
+}
+```
+
 ## License
 
 [MIT](LICENSE)
