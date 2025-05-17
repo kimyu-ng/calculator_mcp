@@ -1,10 +1,9 @@
+"""STDIO for the calculator tool using MCP protocol."""
+
 import asyncio
 import json
-from dotenv import load_dotenv
-
-# Add logging configuration
 import logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+from dotenv import load_dotenv
 
 # MCP server imports
 from mcp import types as mcp_types
@@ -16,27 +15,11 @@ import mcp.server.stdio
 from google.adk.tools.function_tool import FunctionTool
 from google.adk.tools.mcp_tool.conversion_utils import adk_to_mcp_tool_type
 
+from calculator import add, subtract, multiply, divide
+
 # Load environment variables (if any)
 load_dotenv()
-
-# Define calculator functions
-def add(a: float, b: float) -> float:
-    """Add two numbers."""
-    return a + b
-
-def subtract(a: float, b: float) -> float:
-    """Subtract b from a."""
-    return a - b
-
-def multiply(a: float, b: float) -> float:
-    """Multiply two numbers."""
-    return a * b
-
-def divide(a: float, b: float) -> float:
-    """Divide a by b, error on division by zero."""
-    if b == 0:
-        raise ValueError("Division by zero is not allowed.")
-    return a / b
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
 # Instantiate ADK FunctionTools
 add_tool = FunctionTool(add)
