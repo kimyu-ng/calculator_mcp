@@ -102,68 +102,44 @@ If using Cline MCP, add the following configuration:
 ## Using with adk web (SSE Server)
 You can connect to the SSE-based MCP server from `adk web`. Follow these steps:
 
-1. Create a new folder for your ADK agent, e.g. `adk_agent_sse`.
-2. Inside that folder, create `agent.py` with the following:
+1. Create a new folder for your ADK agent, e.g. `calculator_agent`.
 
-```python
-from contextlib import AsyncExitStack
-import asyncio
-from google.adk.agents.llm_agent import LlmAgent
-from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, SseServerParams
 
-async def main():
-    common_exit_stack = AsyncExitStack()
-    tools, _ = await MCPToolset.from_server(
-        connection_params=SseServerParams(
-            url="http://localhost:8000/sse"
-        ),
-        async_exit_stack=common_exit_stack
-    )
-    agent = LlmAgent(
-        model='gemini-2.0-flash',
-        name='calculator_sse_agent',
-        instruction='Use calculator tools via SSE.',
-        tools=tools
-    )
-
-    # Example call
-    from google.adk.runners import Runner
-    from google.adk.sessions import InMemorySessionService
-    from google.adk.artifacts.in_memory_artifact_service import InMemoryArtifactService
-
-    session_service = InMemorySessionService()
-    artifacts_service = InMemoryArtifactService()
-    runner = Runner(
-        app_name='calculator_sse_app',
-        agent=agent,
-        artifact_service=artifacts_service,
-        session_service=session_service,
-    )
-    result = await runner.call_tool('add', {'a': 4, 'b': 7})
-    print(result.text)
-    await common_exit_stack.aclose()
-
-if __name__ == '__main__':
-    asyncio.run(main())
-```
-
-3. Create `__init__.py` in the same folder:
+2. Create a python file `agent.py` and import to `__init__.py` in the same folder:
 
 ```python
 from . import agent
 ```
 
-4. Start the SSE server:
+3. Implement `agent.py` with the following guide:
+   - https://google.github.io/adk-docs/get-started/quickstart/
+
+4. Create a `.env` file inside the `calculator_agent` folder with the following content:
+   ```
+   GOOGLE_GENAI_USE_VERTEXAI=FALSE
+   GOOGLE_API_KEY=PASTE_YOUR_ACTUAL_API_KEY_HERE
+   ```
+   **Note:** Replace `PASTE_YOUR_ACTUAL_API_KEY_HERE` with your actual API key.
+
+5. Start the SSE server:
 
 ```bash
 uv run sse_server.py
 ```
 
-5. In another terminal, navigate to your agent folder and run:
+6. In another terminal, navigate to your agent folder and run:
 
 ```bash
-cd adk_agent_sse
-adk web
+cd agent
+adk web ../
 ```
 
 Your browser will open the ADK web UI, allowing you to interact with the calculator tools over the SSE transport.
+
+
+# References
+1. MCP SSE example:
+   - https://github.com/google/adk-python/blob/main/contributing/samples/mcp_sse_agent/filesystem_server.py
+
+2. MCP STDIO example:
+   - https://github.com/google/adk-python/blob/main/contributing/samples/mcp_stdio_server_agent/agent.py
