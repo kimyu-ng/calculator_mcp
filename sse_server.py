@@ -45,7 +45,7 @@ mcp_server = Server("calculator-mcp-server-sse")
 @mcp_server.list_tools()
 async def list_tools() -> list[mcp_types.Tool]:
     logging.info(
-      "MCP SSE Server: Received list_tools request, advertising %d tools", len(all_tools))
+        "MCP SSE Server: Received list_tools request, advertising %d tools", len(all_tools))
     return [adk_to_mcp_tool_type(tool) for tool in all_tools]
 
 
@@ -66,10 +66,10 @@ async def call_tool(name: str, arguments: dict) -> list[mcp_types.TextContent]:
     else:
         logging.warning("MCP SSE Server: call_tool: Tool '%s' not found", name)
         return [
-          mcp_types.TextContent(
-            type="text",
-            text=json.dumps({"error": f"Tool '{name}' not found."})
-          )
+            mcp_types.TextContent(
+                type="text",
+                text=json.dumps({"error": f"Tool '{name}' not found."})
+            )
         ]
 
 sse = SseServerTransport("/messages/")
