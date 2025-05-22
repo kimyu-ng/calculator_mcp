@@ -1,3 +1,5 @@
+"""Calculator module with basic arithmetic, statistical, and calculus functions."""
+
 import math
 import numpy as np
 from scipy import integrate

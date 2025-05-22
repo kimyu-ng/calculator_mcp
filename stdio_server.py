@@ -15,7 +15,20 @@ import mcp.server.stdio
 from google.adk.tools.function_tool import FunctionTool
 from google.adk.tools.mcp_tool.conversion_utils import adk_to_mcp_tool_type
 
-from calculator import add, subtract, multiply, divide
+from calculator import (
+    add,
+    subtract,
+    multiply,
+    divide,
+    evaluate_expression,
+    calculate_mean,
+    calculate_median,
+    calculate_mode,
+    calculate_std_dev,
+    calculate_variance,
+    numerical_integrate,
+    numerical_differentiate
+)
 
 # Load environment variables (if any)
 load_dotenv()
@@ -26,7 +39,29 @@ add_tool = FunctionTool(add)
 subtract_tool = FunctionTool(subtract)
 multiply_tool = FunctionTool(multiply)
 divide_tool = FunctionTool(divide)
-all_tools = [add_tool, subtract_tool, multiply_tool, divide_tool]
+evaluate_expression_tool = FunctionTool(evaluate_expression)
+calculate_mean_tool = FunctionTool(calculate_mean)
+calculate_median_tool = FunctionTool(calculate_median)
+calculate_mode_tool = FunctionTool(calculate_mode)
+calculate_std_dev_tool = FunctionTool(calculate_std_dev)
+calculate_variance_tool = FunctionTool(calculate_variance)
+numerical_integrate_tool = FunctionTool(numerical_integrate)
+numerical_differentiate_tool = FunctionTool(numerical_differentiate)
+
+all_tools = [
+    add_tool,
+    subtract_tool,
+    multiply_tool,
+    divide_tool,
+    evaluate_expression_tool,
+    calculate_mean_tool,
+    calculate_median_tool,
+    calculate_mode_tool,
+    calculate_std_dev_tool,
+    calculate_variance_tool,
+    numerical_integrate_tool,
+    numerical_differentiate_tool,
+]
 tool_map = {tool.name: tool for tool in all_tools}
 
 # Create MCP server instance

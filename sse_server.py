@@ -7,18 +7,20 @@ from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 
 # Import calculator functions with aliases to be wrapped by @mcp.tool
-from calculator import add as calculator_add, \
-                        subtract as calculator_subtract, \
-                        multiply as calculator_multiply, \
-                        divide as calculator_divide, \
-                        evaluate_expression as calculator_evaluate_expression, \
-                        calculate_mean as calculator_mean, \
-                        calculate_median as calculator_median, \
-                        calculate_mode as calculator_mode, \
-                        calculate_std_dev as calculator_std_dev, \
-                        calculate_variance as calculator_variance, \
-                        numerical_integrate as calculator_integrate, \
-                        numerical_differentiate as calculator_differentiate
+from calculator import (
+    add as calculator_add,
+    subtract as calculator_subtract,
+    multiply as calculator_multiply,
+    divide as calculator_divide,
+    evaluate_expression as calculator_evaluate_expression,
+    calculate_mean as calculator_mean,
+    calculate_median as calculator_median,
+    calculate_mode as calculator_mode,
+    calculate_std_dev as calculator_std_dev,
+    calculate_variance as calculator_variance,
+    numerical_integrate as calculator_integrate,
+    numerical_differentiate as calculator_differentiate
+)
 
 # Load environment variables (if any)
 load_dotenv()
