@@ -185,6 +185,18 @@ The `calculator_agent_litellm` uses LiteLLM, which simplifies using various LLM 
     ```
     The agent will use LiteLLM to proxy requests to the specified OpenAI model using your API key.
 
+## Running Tests
+
+This project uses `pytest` for testing.
+
+1.  From the project root directory (`calculator_mcp`), run:
+
+    ```bash
+    uv run pytest tests
+    ```
+
+    This will discover and run all tests in the `tests/test_calculator.py` file.
+
 # References
 1. MCP SSE example:
    - https://github.com/google/adk-python/blob/main/contributing/samples/mcp_sse_agent/filesystem_server.py
