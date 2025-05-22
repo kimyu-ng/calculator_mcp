@@ -71,14 +71,15 @@ app = Server("calculator-mcp-server")
 async def list_tools() -> list[mcp_types.Tool]:
     # Log incoming list_tools request
     logging.info("MCP Server: Received list_tools request, advertising %d tools", len(all_tools))
-    """List all available calculator tools."""
+
+    # List all available calculator tools.
     return [adk_to_mcp_tool_type(tool) for tool in all_tools]
 
 @app.call_tool()
 async def call_tool(name: str, arguments: dict) -> list[mcp_types.TextContent]:
     # Log incoming call_tool request
     logging.info("MCP Server: Received call_tool for '%s' with args: %s", name, arguments)
-    """Execute a calculator tool by name with given arguments."""
+    # Execute a calculator tool by name with given arguments.
     if name in tool_map:
         try:
             result = await tool_map[name].run_async(args=arguments, tool_context=None)
@@ -96,7 +97,8 @@ async def call_tool(name: str, arguments: dict) -> list[mcp_types.TextContent]:
 async def run_server():
     # Log server start
     logging.info("MCP Server: Starting stdio server loop")
-    """Run the MCP server over standard I/O."""
+
+    # Run the MCP server over standard I/O.
     async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
         await app.run(
             read_stream,
