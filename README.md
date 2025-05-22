@@ -1,6 +1,6 @@
 # Calculator MCP Server
 
-A simple MCP server exposing basic calculator operations (add, subtract, multiply, divide) as ADK FunctionTools over stdio.
+A simple MCP server exposing basic arithmetic (add, subtract, multiply, divide), mathematical expression evaluation, statistical (mean, median, mode, standard deviation, variance), and calculus (numerical integration, differentiation) operations as ADK FunctionTools over stdio and SSE.
 
 ## Prerequisites
 
