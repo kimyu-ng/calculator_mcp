@@ -1,6 +1,8 @@
+import os
 import asyncio
 import json
 from typing import Any
+from google.adk.models.lite_llm import LiteLlm
 
 from dotenv import load_dotenv
 from google.adk.agents.llm_agent import LlmAgent
@@ -11,8 +13,13 @@ from google.adk.tools.mcp_tool.mcp_toolset import (
 
 load_dotenv()
 
+print(os.getenv("MY_OPENAI_API_KEY"))
+
 root_agent = LlmAgent(
-    model="gemini-2.0-flash",
+    model=LiteLlm(
+        model="openai/gpt-4.1-nano",
+        api_key=os.getenv("MY_OPENAI_API_KEY"),
+    ),
     name="CalculatorAgent",
     instruction="""Help user to perform calculations using the calculator tools.
     Once you compute the result, always show step by step calculation.
