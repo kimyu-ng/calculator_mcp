@@ -1,10 +1,6 @@
 import os
-import asyncio
-import json
-from typing import Any
-from google.adk.models.lite_llm import LiteLlm
-
 from dotenv import load_dotenv
+from google.adk.models.lite_llm import LiteLlm
 from google.adk.agents.llm_agent import LlmAgent
 from google.adk.tools.mcp_tool.mcp_toolset import (
     MCPToolset,
