@@ -197,6 +197,26 @@ This project uses `pytest` for testing.
 
     This will discover and run all tests in the `tests/test_calculator.py` file.
 
+## Demo Videos
+
+Here are three demonstration videos showing different ways to use the Calculator MCP Server:
+
+### 1. Basic Addition Operation
+https://github.com/user-attachments/assets/e65a9074-2bed-4647-af80-97d8c193e90b
+
+
+This video demonstrates the basic addition operation using the MCP server, showing how to add two numbers together.
+
+### 2. Statistical Mean Calculation
+https://github.com/user-attachments/assets/0a9d7410-b5bf-465b-8d61-7dab1d5f1701
+
+Watch how to calculate the statistical mean of a dataset using the calculator's statistical functions.
+
+### 3. Mathematical Expression Evaluation
+https://github.com/user-attachments/assets/6939b92a-0d66-4205-aea7-291114a258f3
+
+Learn how to evaluate complex mathematical expressions using the calculator's expression evaluation capabilities.
+
 # References
 1. MCP SSE example:
    - https://github.com/google/adk-python/blob/main/contributing/samples/mcp_sse_agent/filesystem_server.py
