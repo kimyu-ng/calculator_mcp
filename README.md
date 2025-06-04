@@ -10,28 +10,43 @@ A simple MCP server exposing basic arithmetic (add, subtract, multiply, divide),
 ## Installation
 
 1. Clone or download this repository.
-2. In a terminal, install dependencies:
-
-   ```bash
-   uv install
-   ```
-3. Create virtual environment
+2. Create virtual environment
    ```bash
    uv venv
    source .venv/bin/activate
    ```
+3. In a terminal, install dependencies:
 
+   ```bash
+   uv sync
+   ```
 
 ## Running the Server
 Start the MCP server on standard I/O:
 
+### via STDIO
 ```bash
 uv run stdio_server.py
+```
+
+### via SSE
+```bash
+uv run sse_server.py
 ```
 
 You should see:
 ```
 Launching Calculator MCP Server...
+```
+
+### Running the client
+1. open new terminal tab, `source .venv/bin/activate` to activate the env
+2. `cd path/to/your/calculator_agent_litellm`
+3. create `.env`, add key and adjust model appropriately
+4. run the server
+```bash
+cd path/to/your/calculator_agent_litellm
+adk web ../
 ```
 
 ## Using from an ADK Agent
