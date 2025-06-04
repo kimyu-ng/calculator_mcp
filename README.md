@@ -43,7 +43,9 @@ Launching Calculator MCP Server...
 1. open new terminal tab, `source .venv/bin/activate` to activate the env
 2. `cd path/to/your/calculator_agent_litellm`
 3. create `.env`, add key and adjust model appropriately
-4. run the server
+   3a. eg. `GEMINI_API_KEY` or `MY_OPENAI_API_KEY` with `GOOGLE_GENAI_USE_VERTEXAI=false`
+   3b. for all available models, please refer to https://docs.litellm.ai/docs/providers/gemini
+1. run the server
 ```bash
 cd path/to/your/calculator_agent_litellm
 adk web ../
